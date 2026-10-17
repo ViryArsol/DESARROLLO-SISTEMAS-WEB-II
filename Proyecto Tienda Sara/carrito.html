@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Sara</title>
+    
+    <!-- Enlace de Bootstrap CDN 5 (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+      <!-- Estilo rápido -->
+    <style>
+        .tab-pane { display: none; }
+        .tab-pane.show.active { display: block; }
+    </style>
+
+</head>
+<body>
+
+<!--Color de fondo-->
+<body style="background-color: whitesmoke;">
+
+<div class="container my-4">
+    <div class="row g-4">
+
+        <!--================================================-->
+        <!--Columa izquierda: Lista prodcutos y herramientas-->
+        <!--================================================-->
+        <div class="col-lg-8">
+            
+            <!-- TARJETA DE PRODUCTOS EN EL CARRITO -->
+            <div class="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
+                <h5 class="fw-bold mb-4" style="color: #c2185b;">Mi Carrito</h5>
+
+                <!--Prodcuto 1-->
+                <div class="row align-items-center pb-3 mb-3 border-bottom prodcuto-item">
+                   
+                    <div class="col-3 col-sm-2 text-center">
+                        <img src="favAudifonos.jpg" alt="Audífonos Apple" class="img-fluid rounded-3" style="max-height: 70px; object-fit: cover;">
+                    </div>
+                    
+                    <!--Información del producto-->
+                    <div class="col-9 col-sm-4">
+                        <h6 class="fw-bold text-dark mb-1">Audífonos Apple</h6>
+                        <small class="text-muted d-block">Precio unitario: $399</small>
+                        <button class="btn btn-link text-danger p-0 text-decoration-none small mt-1" onclick="eliminarProducto(this)"> Eliminar</button>
+                    </div>
+
+                    <!--Cantidad Seleccionada (Editable)-->
+                    <div class="col-6 col-sm-3 mt-2 mt-sm-0">
+                        <label class="form-label small text-muted mb-1">Cantidad: </label>
+                        <input type="number" class="form-control form-control-sm text-center fw-bold input-cantidad" 
+                            value="1" min="1" max="10" data-precio="399" oninput="actualizarCarrito()">
+                    </div>
+
+                    <!--Subtotal del producto-->
+                    <div class="col-6 col-sm-3 text-end mt-2 mt-sm-0">
+                        <small class="text-muted d-block">Subtotal:</small>
+                        <span class="fw-bold fs-6" style="color: #c2185b;">$399</span>
+                    </div>
+                </div>
+
+                <!--Prodcuto 2-->
+                <div class="row align-items-center pb-3 mb-3 border-bottom prodcuto-item">
+                    
+                    <div class="col-3 col-sm-2 text-center">
+                        <img src="favMochila.jpg" alt="Mochila Laptop" class="img-fluid rounded-3" style="max-height: 70px; object-fit: cover;">
+                    </div>
+                    
+                    <!--Información del producto-->
+                    <div class="col-9 col-sm-4">
+                        <h6 class="fw-bold text-dark mb-1">Mochila Laptop</h6>
+                        <small class="text-muted d-block">Precio unitario: $799</small>
+                        <button class="btn btn-link text-danger p-0 text-decoration-none small mt-1" onclick="eliminarProducto(this)">Eliminar</button>
+                    </div>
+
+                    <!--Cantidad Seleccionada (Editable)-->
+                    <div class="col-6 col-sm-3 mt-2 mt-sm-0">
+                        <label class="form-label small text-muted mb-1">Cantidad: </label>
+                        <input type="number" class="form-control form-control-sm text-center fw-bold input-cantidad" 
+                            value="1" min="1" max="10" data-precio="399" oninput="actualizarCarrito()">
+                    </div>
+
+                    <!--Subtotal del producto-->
+                    <div class="col-6 col-sm-3 text-end mt-2 mt-sm-0">
+                        <small class="text-muted d-block">Subtotal:</small>
+                        <span class="fw-bold fs-6" style="color: #c2185b;">$799</span>
+                    </div>
+                </div>
+
+                <!--Botón para seguir comprando-->
+                <div class="mt-2">
+                    <a href="productos.html" class="btn btn-outline-secondary rounded-pill px-4 btn-sm fw-bold">
+                       Seguir comprando 
+                    </a>
+                </div>
+            </div>
+
+            <!--Tarjeta: Calculadora de envío y cupón-->
+            <div class="row g-3">
+                <!-- Opciones de Envío y Calculadora -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm p-3 rounded-4 bg-white h-100">
+                        <h6 class="fw-bold mb-2" style="color: #c2185b;">Calcular Envío</h6>
+                        <p class="text-muted small mb-2">Ingresa tu código postal para estimar el costo.</p>
+                        <div class="input-group input-group-sm mb-2">
+                            <input type="text" class="form-control" placeholder="Ej. 80000">
+                            <button class="btn text-white" style="background-color: #c2185b;" type="button">Calcular</button>
+                        </div>
+                        <small class="text-success fw-bold">Envío Estándar: $99 (Llega en 3 días)</small>
+                    </div>
+                </div>
+
+                <!--Formulario de Cupón de Descuento-->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm p-3 rounded-4 bg-white h-100">
+                        <h6 class="fw-bold mb-2" style="color: #c2185b;">Cupón de Descuento</h6>
+                        <p class="text-muted small mb-2">¿Tienes un código promocional?</p>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control text-uppercase" placeholder="CÓDIGO">
+                            <button class="btn btn-dark" type="button">Aplicar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--==================================================-->
+        <!--Columa derecha: Resumen del pedido y botón de pago-->
+        <!--==================================================-->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm p-4 rounded-4 bg-white position-sticky" style="top: 20px;">
+                <h5 class="fw-bold mb-3" style="color: #c2185b;">Resumen del Pedido</h5>
+
+                <div class="d-flex justify-content-between mb-2 small text-secondary">
+                    <span>Subtotal de productos:</span>
+                    <span class="fw-bold text-dark" id="Subtotal-general">$1,198</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="fw-bold fs-5 text-dark">Total:</span>
+                    <span class="fw-bold fs-5" id="total-general" style="color: #c2185b;">$1,297</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2 small text-secondary">
+                    <span>Impuestos (IVA 16%):</span>
+                    <span class="fw-bold text-dark">$207</span>
+                </div>
+
+                <hr class="my-3">
+
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="fw-bold fs-5 text-dark">Total:</span>
+                    <span class="fw-bold fs-5" style="color: #c2185b;">$1,504</span>
+                </div>
+
+                <!-- Botón de Proceder al Pago -->
+                <button class="btn text-white w-100 rounded-pill py-2 fw-bold mb-2" style="background-color: #c2185b;">
+                    Proceder al Pago ->
+                </button>
+
+                <small class="text-center text-muted d-block" style="font-size: 11px;">
+                    Compra 100% Segura y Cifrada
+                </small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- Enlace de Bootstrap CDN 5 (JavaScript / Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <script>
+    function mostrarSeccion(idSeccion) {
+        // Oculta todas las secciones
+        document.querySelectorAll('.tab-pane').forEach(function(seccion) {
+            seccion.classList.remove('show', 'active');
+        });
+        
+        // Muestra únicamente la sección seleccionada
+        var seccionActiva = document.getElementById(idSeccion);
+        if (seccionActiva) {
+            seccionActiva.classList.add('show', 'active');
+        }
+    }
+    </script>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

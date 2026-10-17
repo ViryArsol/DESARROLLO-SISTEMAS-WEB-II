@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Sara</title>
+    
+    <!-- Enlace de Bootstrap CDN 5 (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Estilo rápido -->
+    <style>
+        .tab-pane { display: none; }
+        .tab-pane.show.active { display: block; }
+    </style>
+</head>
+<!--Color de fondo-->
+<body style="background-color: #fce4ec;">
+
+<!--hacer franja blanca para enfatizar el titulo principal-->
+<div class="container-fluid bg-white py-1 px-1 mt-3 position-relative">
+     <div class="row align-items-center">
+
+        <div class="col-lg-8">
+          <div class="bg-white p-3 rounded-0" style="min-height: 100px;">
+             <h1 style="Color: #c2185b;">Bienvenida a Tienda Sara</h1>    
+          </div>
+        </div>
+
+        <!--colocar imagen en titulo principal-->
+        <div class="col-lg-2 position-relative">
+            <img src="icono tienda.jpg" alt="Tienda" class="rounded-circle shadow position-absolute end-0 top-20 translate-middle-y" style="width: 150px; height: 150px; object-fit: cover; margin-right: 28px; z-index: 5;">
+        </div>
+
+    </div>
+</div>
+
+     <!--colocar recuadro de busqueda-->
+<div class="container mt-2">
+        <form action="#" method="GET" class="w-50">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-lg" placeholder="¿Qué estás buscando hoy?" aria-label="Buscar">
+                <button class="btn text-white" style="background-color: #c2185b" type="submit">
+                    Buscar
+                </button>
+            </div>
+        </form>
+</div>
+
+    <!--colocar banner de ofertas-->
+<div class="container-fluid my-4 px-0">
+    <div class="row g-0 text-center">
+        <!--Seccion 1 (izquierdo)-->
+        <div class="col-md-4 bg-white p-4 border-end">
+        <a href="#" class="text-decoration-none">    
+            <h3 class="text-danger fw-bold">Promociones</h3>
+            <img src="refri oferta.jpg" alt="Producto 1" class="img-fluid my-3 rounded" style="max-height: 180px; object-fit: cover;">
+            <p class="text-dark fw-bold mb-0">Hasta 30% OFF</p>
+            <small class=" text-muted">En Productos seleccionados</small>
+        </a>
+        </div>
+        <!--Sección 2 (centro)-->
+        <div class="col-md-4 bg-white p-4 border-end">
+            <a href="#" class="text-decoration-none"> 
+            <h3 class="text-primary fw-bold">Novedades</h3>
+            <img src="Deporte oferta.jpg" alt="Producto 2" class="img-fluid my-3 rounded" style="max-height: 180px; object-fit: cover;">
+            <p class="text-dark fw-bold mb-0">Colección Deportiva</p>
+            <small class="text-muted">Llegó lo Nuevo</small>
+            </a>
+        </div>
+        <!--Sección 3(derecho)-->
+        <div class="col-md-4 bg-white p-4">
+            <h3 class="text-succes fw-bold">Ofertas Flash</h3>
+            <a href="#" class="text-decoration-none"> 
+            <img src="tv oferta.jpg" alt="Producto 3" class="img-fluid rounded" style="max-height: 180px; object-fit: cover;">
+            <P class="text-dark fw-bold mb-0">Envío Gratis</P>
+            <small class="text-muted">En compras mayores a $50</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!--Iconos de categorias-->
+<div class="container my-3">
+    <h2 class="text-center text-dark mb-3 fw-bold">Categorías</h2>
+    <div class="row g-3 justify-content-center">
+        
+        <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">
+                <img src="icono linea blanca.jpg" alt="Categoria 1" class="rounded-2 mx-auto mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Línea Blanca</h6>
+            </div>
+           </a>
+        </div> 
+
+        <div class="col-5 col-md-3 col-lg-2">   
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">   
+                <img src="icono computacion.jpg" alt="Categoria 2" class="rounded-2 mx-auto mb-2" style="width: 75px; height: 75px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Computación</h6>
+            </div>
+           </a>
+        </div> 
+            
+         <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-2 rounded-4 bg-white h-100">        
+                <img src="iconoCel.jpg" alt="Categoria 3" class="rounded-0 mx-auto mb-2" style="width: 90px; height: 90px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Electrónica</h6>
+            </div>
+           </a>
+        </div> 
+            
+        <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">        
+                <img src="icono ropa.jpg" alt="Categoria 4" class="rounded-circle mx-auto mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Ropa y Moda</h6>
+            </div>
+           </a>
+        </div> 
+          
+        <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none"> 
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">                 
+                <img src="icono hogar.jpg" alt="Categoria 5" class="rounded-3 mx-auto mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Hogar y Jardín</h6>
+            </div>
+           </a>
+        </div>        
+
+        <div class="col-5 col-md-3 col-lg-2">   
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">        
+                <img src="icono deporte.jpg" alt="Categoria 6" class="rounded-1 mx-auto mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Deportes</h6>
+            </div>
+           </a>
+        </div>  
+
+        <div class="col-5 col-md-3 col-lg-2">   
+           <a href="#" class="text-decoration-none"> 
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">                    
+                <img src="icono juguete.jpg" alt="Categoria 7" class="rounded-1 mx-auto mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Juguetes</h6>
+            </div>
+           </a>
+        </div>          
+
+        <div class="col-5 col-md-3 col-lg-2">    
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-2 rounded-4 bg-white h-100">                
+                <img src="icono belleza.jpg" alt="Categoria 8" class="rounded-1 mx-auto mb-2" style="width: 90px; height: 90px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Belleza y Cuidado Personal</h6>
+            </div>
+           </a>
+        </div>          
+            
+        <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none"> 
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">        
+                <img src="Icono alimento.jpg" alt="Categoria 9" class="rounded-circle mx-auto mb-2" style="width: 75px; height: 75px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Alimentos y Bebidas</h6>
+            </div>
+           </a>
+        </div>          
+
+        <div class="col-5 col-md-3 col-lg-2">  
+           <a href="#" class="text-decoration-none">
+            <div class="card text-center border-0 shadow-sm p-3 rounded-4 bg-white h-100">        
+                <img src="icono libro.jpg" alt="Categoria 10" class="rounded-circle mx-auto mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <h6 class="text-dark fw-bold mb-0" style="font-size: 13px;">Libros y Papelería</h6>
+            </div>
+           </a>
+        </div>
+    </div>
+</div>
+
+    <!--Productos populares-->
+    <div class="container my-4">
+        <h2 class="text-center text-dark mb-4 fw-bold">Productos Populares</h2>
+
+        <div class="row g-4 justify-content-center">
+
+            <!--Producto Popular 1-->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-5">
+                            <img src="favAudifonos.jpg" alt="Popular1" class="img-fluid h-100" style="object-fit: cover; min-height: 180px;">
+                        </div>
+                        <!--Llamar a la acción-->
+                        <div class="col-7">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold text-dark">Audifonos Inalámbricos</h5>
+                                <p class="text-muted small mb-2">Audifonos marca Apple en distintos colores</p>
+                                <p class="text-danger fw-bold fs-5 mb-3">$399</p>
+                                <a href="productos.html" class="btn text-white px-4 rounded-pill" style="background-color: #c2185b;">Comprar ahora</a>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Producto Popular 2-->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-5">
+                            <img src="favMochila.jpg" alt="Popular2" class="img-fluid h-100" style="object-fit: cover; min-height: 180px;">
+                        </div>
+                        <!--Llamar a la acción-->
+                        <div class="col-7">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold text-dark">Mochila para laptop</h5>
+                                <p class="text-muted small mb-2">Mochila con varios compartimientos para laptop, tablet, entre otros</p>
+                                <p class="text-danger fw-bold fs-5 mb-3">$799</p>
+                                <a href="productos.html" class="btn text-white px-4 rounded-pill" style="background-color: #c2185b;">Comprar ahora</a>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!--Informacion sobre la tienda-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#" style="color:#c2185b;">Tienda Sara</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    <!--Menú desplegable-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre nosotras
+                        </a>
+
+                        <!--Opciones-->
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item py-2" href="javascript:void(0);" onclick="mostrarSeccion('quienes-somos')">¿Quiénes somos?</a></li>
+                            <li><a class="dropdown-item py-2" href="javascript:void(0);" onclick="mostrarSeccion('mision')">Misión</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2" href="javascript:void(0);" onclick="mostrarSeccion('vision-valores')">Visión y Valores</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade show active" id="quienes-somos" role="tabpanel">
+                            <h3 class="fw-bold mb-3" style="color:#c2185b;">¿Quiénes somos?</h3>
+                            <p class="text-secondary lh-lg">
+                              Somos Tienda Sara, un espacio dedicado a ofrecer lo mejor en tendencias, moda y artículos seleccionados con amor y dedicación. Nuestro compromiso es brindarte calidad, cercanía y una experiencia de compra única pensada especialmente para ti.  
+                            </p>
+                        </div>
+
+                        <div class="tab-pane fade" id="mision" role="tabpanel">
+                            <h3 class="fw-bold mb-3" style="color:#c2185b;">Nuestra Misión</h3>
+                            <p class="text-secondary lh-lg">
+                                Proveer productos de alta calidad que inspiren confianza y estilo en la vida diaria de nuestros clientes, garantizando un servicio cálido, accesible y siempre a la vanguardia.
+                            </p>
+                        </div>
+
+                        <div class="tab-pane fade" id="vision-valores" role="tabpanel">
+                            <h3 class="fw-bold mb-3" style="color:#c2185b;">Visión y Valores</h3>
+                            <p class="text-secondary lh-lg">
+                                <strong>Visión:</strong> Ser la tienda líder preferida por nuestra comunidad gracias a nuestra autenticidad y excelencia en el servicio.<br><br>
+                                <strong>Valores:</strong> Honestidad, empatía, compromiso con la calidad, pasión por lo que hacemos y cercanía con cada cliente.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Pie de página-->
+    <footer class="text-white py-4 mt-5" style="background-color: #c2185b;">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-6 mb-3 mb-0 text-center text-md-start">
+                    <h5 class="fw-bold mb-2">Tienda Sara</h5>
+                    <p class="mb-1 small">Telefóno: (667) 124-7865</p>
+                    <p class="mb-0 small">Correo: contacto@tiendasara.com</p>
+                </div>
+
+                <div class="col-md-6 text-center tex-md-end">
+                    <p class="fw-bold mb-2">Síguenos en nuestras redes</p>
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="#" class="text-white text-decoration-none small px-3 py-1 rounded-pill border border-white">Facebook</a>
+                        <a href="#" class="text-white text-decoration-none small px-3 py-1 rounded-pill border border-white">Instagram</a>
+                        <a href="#" class="text-white text-decoration-none small px-3 py-1 rounded-pill border border-white">WhatsApp</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Enlace de Bootstrap CDN 5 (JavaScript / Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+    function mostrarSeccion(idSeccion) {
+        // Oculta todas las secciones
+        document.querySelectorAll('.tab-pane').forEach(function(seccion) {
+            seccion.classList.remove('show', 'active');
+        });
+        
+        // Muestra únicamente la sección seleccionada
+        var seccionActiva = document.getElementById(idSeccion);
+        if (seccionActiva) {
+            seccionActiva.classList.add('show', 'active');
+        }
+    }
+    </script>
+
+</body>
+</html>
+  
