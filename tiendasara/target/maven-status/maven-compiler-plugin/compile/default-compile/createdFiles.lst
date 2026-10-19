@@ -1,0 +1,11 @@
+com\tiendasara\tiendasara\models\ProductDto.class
+com\tiendasara\tiendasara\services\CategoryRepository.class
+com\tiendasara\tiendasara\controllers\ProductController.class
+com\tiendasara\tiendasara\models\MarkDto.class
+com\tiendasara\tiendasara\services\ProductRepository.class
+com\tiendasara\tiendasara\models\Category.class
+com\tiendasara\tiendasara\models\Mark.class
+com\tiendasara\tiendasara\models\Product.class
+com\tiendasara\tiendasara\services\MarkRepository.class
+com\tiendasara\tiendasara\TiendasaraApplication.class
+com\tiendasara\tiendasara\models\CategoryDto.class
