@@ -8,10 +8,10 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDcategoria", columnDefinition = "INT")
+    @Column(name = "IDcategoria", insertable = false, updatable = false)
     private Long id;
 
-    @Column(name = "DescripcionCategoria", columnDefinition = "VARCHAR")
+    @Column(name = "DescripcionCategoria")
     private String name;
 
     // Getters y Setters
