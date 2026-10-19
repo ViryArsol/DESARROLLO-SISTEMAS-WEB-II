@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDmarca", columnDefinition = "INT")
+    @Column(name = "IDmarca", insertable = false, updatable = false)
     private Long id;
     
-    @Column(name = "DescripcionMarca", columnDefinition = "VARCHAR")
+    @Column(name = "DescripcionMarca")
     private String name;
 
     // Getters y Setters
