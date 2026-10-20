@@ -1,5 +1,7 @@
 package com.tiendasara.tiendasara.controllers;
 
+import com.tiendasara.tiendasara.models.Category;
+import com.tiendasara.tiendasara.models.Mark;
 import com.tiendasara.tiendasara.models.Product;
 import com.tiendasara.tiendasara.models.ProductDto;
 import com.tiendasara.tiendasara.services.CategoryRepository;
@@ -33,7 +35,7 @@ public class ProductController {
     @Autowired
     private MarkRepository markRepo;
 
-    // 1. Lista Productos (Consulta)
+    // 1. HTTP GET: Listar todos los productos
     @GetMapping({"", "/"})
     public String showProductList(Model model) {
         List<Product> products = productRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -41,7 +43,7 @@ public class ProductController {
         return "products/index";
     }
 
-    // 2. Mostrar formulario de crear producto (ALTA - GET)
+    // 2. HTTP GET: Mostrar formulario de alta
     @GetMapping("/create")
     public String showCreatePage(Model model) {
         ProductDto productDto = new ProductDto();
@@ -51,7 +53,7 @@ public class ProductController {
         return "products/CreateProduct";
     }
 
-    // 3. Procesar creación de producto (ALTA - POST)
+    // 3. HTTP POST: Procesar y guardar el nuevo producto
     @PostMapping("/create")
     public String createProduct(
             @Valid @ModelAttribute ProductDto productDto,
@@ -68,7 +70,7 @@ public class ProductController {
             return "products/CreateProduct";
         }
 
-        // Guardar la imagen en el servidor local
+        // Guardar la imagen localmente
         MultipartFile image = productDto.getImageFile();
         Date createdAt = new Date();
         String storageFileName = createdAt.getTime() + "_" + image.getOriginalFilename();
@@ -86,14 +88,16 @@ public class ProductController {
             System.out.println("Excepción: " + ex.getMessage());
         }
 
-        // Mapear DTO a la entidad Product
+        Category category = categoryRepo.findById(Long.parseLong(productDto.getCategory()))
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+        Mark mark = markRepo.findById(Long.parseLong(productDto.getMark()))
+                .orElseThrow(() -> new RuntimeException("Marca no encontrada"));
+
         Product product = new Product();
         product.setDescription(productDto.getDescription());
-        product.setPrice(productDto.getPrice());
         product.setAmount(productDto.getAmount());
-        product.setCategory(productDto.getCategory());
-        product.setMark(productDto.getMark());
-        product.setCreatedAt(createdAt);
+        product.setCategory(category);
+        product.setMark(mark);
         product.setImageFileName(storageFileName);
 
         productRepo.save(product);
@@ -101,7 +105,7 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    // 4. Mostrar formulario de editar producto (MODIFICACIÓN - GET)
+    // 4. HTTP GET: Mostrar formulario de edición
     @GetMapping("/edit")
     public String showEditPage(Model model, @RequestParam Long id) {
         try {
@@ -110,10 +114,9 @@ public class ProductController {
 
             ProductDto productDto = new ProductDto();
             productDto.setDescription(product.getDescription());
-            productDto.setPrice(product.getPrice());
             productDto.setAmount(product.getAmount());
-            productDto.setCategory(product.getCategory());
-            productDto.setMark(product.getMark());
+            productDto.setCategory(product.getCategory() != null ? product.getCategory().getId().toString() : null);
+            productDto.setMark(product.getMark() != null ? product.getMark().getId().toString() : null);
 
             model.addAttribute("productDto", productDto);
             model.addAttribute("categories", categoryRepo.findAll());
@@ -126,7 +129,7 @@ public class ProductController {
         return "products/EditProduct";
     }
 
-    // 5. Procesar actualizarción de producto (MODIFICACIÓN - POST)
+    // 5. HTTP POST: Procesar actualización de producto
     @PostMapping("/edit")
     public String updateProduct(
             Model model,
@@ -145,7 +148,6 @@ public class ProductController {
             }
 
             if (!productDto.getImageFile().isEmpty()) {
-                // Borrar imagen anterior
                 String uploadDir = "public/images/";
                 Path oldImagePath = Paths.get(uploadDir + product.getImageFileName());
                 try {
@@ -154,21 +156,24 @@ public class ProductController {
                     System.out.println("Excepción: " + ex.getMessage());
                 }
 
-                // Subir nueva imagen
                 MultipartFile image = productDto.getImageFile();
                 Date createdAt = new Date();
-              String storageFileName = createdAt.getTime() + "_" + image.getOriginalFilename();
+                String storageFileName = createdAt.getTime() + "_" + image.getOriginalFilename();
                 try (InputStream inputStream = image.getInputStream()) {
                     Files.copy(inputStream, Paths.get(uploadDir + storageFileName), StandardCopyOption.REPLACE_EXISTING);
                 }
                 product.setImageFileName(storageFileName);
             }
 
+            Category category = categoryRepo.findById(Long.parseLong(productDto.getCategory()))
+                    .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+            Mark mark = markRepo.findById(Long.parseLong(productDto.getMark()))
+                    .orElseThrow(() -> new RuntimeException("Marca no encontrada"));
+
             product.setDescription(productDto.getDescription());
-            product.setPrice(productDto.getPrice());
             product.setAmount(productDto.getAmount());
-            product.setCategory(productDto.getCategory());
-            product.setMark(productDto.getMark());
+            product.setCategory(category);
+            product.setMark(mark);
 
             productRepo.save(product);
 
@@ -179,13 +184,11 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    // 6. Eliminar producto (BAJA)
+    // 6. HTTP GET: Eliminar producto
     @GetMapping("/delete")
     public String deleteProduct(@RequestParam Long id) {
         try {
             Product product = productRepo.findById(id).get();
-
-            // Borrar archivo de imagen del servidor
             Path imagePath = Paths.get("public/images/" + product.getImageFileName());
             try {
                 Files.delete(imagePath);
